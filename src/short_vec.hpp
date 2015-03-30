@@ -28,6 +28,9 @@ public:
 
     class sse
     {};
+
+    class neon
+    {};
 };
 
 #include <sstream>
@@ -63,5 +66,7 @@ public:
 #include <libflatarray/detail/short_vec_sse_float_16.hpp>
 
 #include <libflatarray/detail/short_vec_qpx_double_4.hpp>
+
+#include <libflatarray/detail/short_vec_neon_float_4.hpp>
 
 #endif
