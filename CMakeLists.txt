@@ -1,5 +1,32 @@
 cmake_minimum_required(VERSION 2.6.4 FATAL_ERROR)
 
+# *0. Set the build target here
+#set(INTEL_SSE TRUE)
+set(ARM_NEON TRUE)
+
+if (INTEL_SSE)
+    set(ADDITIONAL_COMPILE_FLAGS  "-D __SSE__")
+endif (INTEL_SSE)
+
+if (INTEL_AVX)
+    set(ADDITIONAL_COMPILE_FLAGS  "-D __AVX__ -mavx")
+endif (INTEL_AVX)
+
+if (ARM_NEON)
+    # Cross Compile
+    set(CMAKE_C_COMPILER "arm-linux-gnueabi-gcc")
+    set(CMAKE_CXX_COMPILER "arm-linux-gnueabi-g++")
+    #set(ADDITIONAL_COMPILE_FLAGS "-D __NEON__ -march=armv7-a -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp")
+    set(CMAKE_C_FLAGS "-D __NEON__ -march=armv7-a -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp")
+    set(CMAKE_CXX_FLAGS "-D __NEON__ -march=armv7-a -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp")
+    set(Boost_NO_SYSTEM_PATHS TRUE)
+    if (Boost_NO_SYSTEM_PATHS)
+        set(BOOST_ROOT "~/Developer/libflatarray/Software/boost-install")
+        set(BOOST_INCLUDEDIR "~/Developer/libflatarray/Software/boost-install/include")
+        set(BOOST_LIBRARYDIR "~/Developer/libflatarray/Software/boost-install/lib")
+    endif (Boost_NO_SYSTEM_PATHS)
+endif (ARM_NEON)
+
 # 1. GENERIC PACKAGE INFORMATION
 set(PACKAGE_NAME libflatarray)
 set(PACKAGE_VERSION "0.2.0")

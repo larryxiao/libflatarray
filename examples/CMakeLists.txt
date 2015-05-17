@@ -1,4 +1,6 @@
 add_subdirectory(charged_particles)
 add_subdirectory(jacobi)
 add_subdirectory(lbm)
-add_subdirectory(performance_tests)
+if (INTEL_AVX)
+    add_subdirectory(performance_tests)
+endif (INTEL_AVX)
