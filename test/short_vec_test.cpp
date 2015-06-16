@@ -293,13 +293,17 @@ ADD_TEST(TestImplementationStrategyFloat)
 #undef EXPECTED_TYPE
 
 #ifdef __SSE__
-#ifdef __AVX__
-#define EXPECTED_TYPE short_vec_strategy::avx
+  #ifdef __AVX__
+    #ifdef __AVX512__
+      #define EXPECTED_TYPE short_vec_strategy::avx512
+    #else
+      #define EXPECTED_TYPE short_vec_strategy::avx
+    #endif
+  #else
+    #define EXPECTED_TYPE short_vec_strategy::sse
+  #endif
 #else
-#define EXPECTED_TYPE short_vec_strategy::sse
-#endif
-#else
-#define EXPECTED_TYPE short_vec_strategy::scalar
+  #define EXPECTED_TYPE short_vec_strategy::scalar
 #endif
     checkForStrategy(short_vec<float, 16>::strategy(), EXPECTED_TYPE());
 #undef EXPECTED_TYPE
