@@ -295,7 +295,11 @@ ADD_TEST(TestImplementationStrategyFloat)
 #ifdef __SSE__
   #ifdef __AVX__
     #ifdef __AVX512__
-      #define EXPECTED_TYPE short_vec_strategy::avx512
+      #ifdef __IMCI__
+        #define EXPECTED_TYPE short_vec_strategy::imci
+      #else
+        #define EXPECTED_TYPE short_vec_strategy::avx512
+      #endif
     #else
       #define EXPECTED_TYPE short_vec_strategy::avx
     #endif

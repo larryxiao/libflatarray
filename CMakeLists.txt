@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 2.6.4 FATAL_ERROR)
 
 # *0. Set the build target here
-#set(INTEL_SSE TRUE)
+set(INTEL_SSE TRUE)
 #set(ARM_NEON TRUE)
 #set(INTEL_AVX TRUE)
-set(INTEL_AVX512 TRUE)
+#set(INTEL_AVX512 TRUE)
 
 if (INTEL_SSE)
     set(ADDITIONAL_COMPILE_FLAGS  "-D __SSE__")
@@ -16,12 +16,12 @@ endif (INTEL_AVX)
 
 if (INTEL_AVX512)
     # [c++ - Appending compiler flags to a file with CMake - Stack Overflow](http://stackoverflow.com/questions/20244800/appending-compiler-flags-to-a-file-with-cmake)
-    #set(CMAKE_C_COMPILER "/home/walnut/Developer/libflatarray/Software/gcc_install_5.0.0-mpx-r214719/bin/x86_64-pc-linux-gnu-gcc")
-    #set(CMAKE_CXX_COMPILER "/home/walnut/Developer/libflatarray/Software/gcc_install_5.0.0-mpx-r214719/bin/x86_64-pc-linux-gnu-c++")
-    #set(CMAKE_C_FLAGS "-B ~/Developer/libflatarray/Software/binutils-gdb_install_2.24.51.20140422/bin -L /usr/lib/x86_64-linux-gnu/ -L ~/Developer/libflatarray/Software/gcc_install_5.0.0-mpx-r214719/lib64")
-    #set(CMAKE_CXX_FLAGS "-B ~/Developer/libflatarray/Software/binutils-gdb_install_2.24.51.20140422/bin -L /usr/lib/x86_64-linux-gnu/ -L ~/Developer/libflatarray/Software/gcc_install_5.0.0-mpx-r214719/lib64")
-    #set(ADDITIONAL_COMPILE_FLAGS  "-D __AVX512__ -mavx512f")
-    #set(BOOST_LIBRARYDIR "/usr/lib64/")
+    set(CMAKE_C_COMPILER "/home/walnut/Developer/libflatarray/Software/gcc_install_5.0.0-mpx-r214719/bin/x86_64-pc-linux-gnu-gcc")
+    set(CMAKE_CXX_COMPILER "/home/walnut/Developer/libflatarray/Software/gcc_install_5.0.0-mpx-r214719/bin/x86_64-pc-linux-gnu-c++")
+    set(CMAKE_C_FLAGS "-B ~/Developer/libflatarray/Software/binutils-gdb_install_2.24.51.20140422/bin -L /usr/lib/x86_64-linux-gnu/ -L ~/Developer/libflatarray/Software/gcc_install_5.0.0-mpx-r214719/lib64")
+    set(CMAKE_CXX_FLAGS "-B ~/Developer/libflatarray/Software/binutils-gdb_install_2.24.51.20140422/bin -L /usr/lib/x86_64-linux-gnu/ -L ~/Developer/libflatarray/Software/gcc_install_5.0.0-mpx-r214719/lib64")
+    set(ADDITIONAL_COMPILE_FLAGS  "-D __AVX512__ -mavx512f")
+    set(BOOST_LIBRARYDIR "/usr/lib64/")
     # test
     set(ADDITIONAL_COMPILE_FLAGS  "-D __AVX512__")
 endif (INTEL_AVX)

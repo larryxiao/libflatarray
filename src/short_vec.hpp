@@ -20,6 +20,9 @@ public:
     class avx512
     {};
 
+    class imci 
+    {};
+
     class cuda
     {};
 
