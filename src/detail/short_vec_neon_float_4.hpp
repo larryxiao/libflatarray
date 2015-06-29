@@ -3,7 +3,6 @@
 
 #ifdef __ARM_NEON__
 #include <arm_neon.h>
-#warning andi: NEON2
 
 #ifndef __CUDA_ARCH__
 
