@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.6.4 FATAL_ERROR)
 
 # *0. Set the build target here
-set(INTEL_SSE TRUE)
+#set(INTEL_SSE TRUE)
 #set(ARM_NEON TRUE)
 #set(INTEL_AVX TRUE)
 #set(INTEL_AVX512 TRUE)
@@ -24,7 +24,7 @@ if (INTEL_AVX512)
     set(BOOST_LIBRARYDIR "/usr/lib64/")
     # test
     set(ADDITIONAL_COMPILE_FLAGS  "-D __AVX512__")
-endif (INTEL_AVX)
+endif(INTEL_AVX512)
 
 if (ARM_NEON)
     # Cross Compile
